@@ -18,6 +18,8 @@ public interface IEngine {
 
     void doMath();
 
+    String getQuestion();
+
     default void showResultDialog(String content) {
         Activity activity = App.activities.firstElement();
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -49,6 +51,19 @@ public interface IEngine {
                 buffer.append(arr[pos++]);
             }else {
                 buffer.append(String.format("%d、", arr[pos++]));
+            }
+        }
+        return buffer.toString();
+    }
+
+    default String charArrayToStr(char[] arr){
+        StringBuffer buffer=new StringBuffer();
+        int pos=0;
+        while (pos<arr.length){
+            if(pos+1==arr.length){
+                buffer.append(arr[pos++]);
+            }else {
+                buffer.append(String.format("%c、", arr[pos++]));
             }
         }
         return buffer.toString();

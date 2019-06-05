@@ -33,4 +33,9 @@ public class Chapter268 implements IEngine {
         showResultDialg("给定一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数"
                 , intArrayToStr(arr), String.valueOf(result));
     }
+
+    @Override
+    public String getQuestion() {
+        return "给定一个包含 0, 1, 2, ..., n 中 n 个数的序列，找出 0 .. n 中没有出现在序列中的那个数";
+    }
 }

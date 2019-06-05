@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    public static String[] datas = {"268", "001", "002", "003", "004", "005", "006", "007"};
+    public static String[] datas = {"268", "344", "002", "003", "004", "005", "006", "007"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
