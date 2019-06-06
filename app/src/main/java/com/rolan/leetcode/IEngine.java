@@ -3,14 +3,8 @@ package com.rolan.leetcode;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.os.Build;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
-import androidx.annotation.RequiresApi;
-
-import com.rolan.leetcode.tasks.Chapter203;
 
 /**
  * Created by wangyang on 2019-06-05.18:05
@@ -71,5 +65,31 @@ public interface IEngine {
         return buffer.toString();
     }
 
+     class LinkEntity{
+        public int value;
+         public LinkEntity next;
 
+        public LinkEntity(int value) {
+            this.value = value;
+        }
+
+        public LinkEntity getNext() {
+            return next;
+        }
+
+        public void setNext(LinkEntity next) {
+            this.next = next;
+        }
+    }
+
+    default String linkToStr(LinkEntity entity){
+        StringBuffer buffer=new StringBuffer();
+        LinkEntity current=new LinkEntity(entity.value);
+        current.next=entity.next;
+        while (current.next!=null){
+            buffer.append(current.value+"、");
+            current=current.next;
+        }
+        return buffer.toString();
+    }
 }

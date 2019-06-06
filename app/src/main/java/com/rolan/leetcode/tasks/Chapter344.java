@@ -26,6 +26,15 @@ public class Chapter344 implements IEngine {
      * <p>
      * 原理：头尾开始交换数值，length单数时判断 i！=j,偶数时判断i<j;
      *
+     * 示例 1：
+     *
+     * 输入：["h","e","l","l","o"]
+     * 输出：["o","l","l","e","h"]
+     * 示例 2：
+     *
+     * 输入：["H","a","n","n","a","h"]
+     * 输出：["h","a","n","n","a","H"]
+     *
      * @return
      */
     private char[] solution(char[] arr) {

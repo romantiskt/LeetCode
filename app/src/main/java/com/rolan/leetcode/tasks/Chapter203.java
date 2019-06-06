@@ -28,6 +28,12 @@ public class Chapter203 implements IEngine {
 
     /**
      * 删除链表中等于给定值 val 的所有节点。
+     *
+     * 示例:
+     *
+     * 输入: 1->2->6->3->4->5->6, val = 6
+     * 输出: 1->2->3->4->5
+     *
      * @param head 链表
      * @param i 给定值
      */
@@ -54,31 +60,4 @@ public class Chapter203 implements IEngine {
         return "删除链表中等于给定值 val 的所有节点。";
     }
 
-    public String linkToStr(Chapter203.LinkEntity entity){
-        StringBuffer buffer=new StringBuffer();
-        LinkEntity current=new LinkEntity(entity.value);
-        current.next=entity.next;
-        while (current.next!=null){
-            buffer.append(current.value+"、");
-            current=current.next;
-        }
-        return buffer.toString();
-    }
-
-    public static class LinkEntity{
-        int value;
-        LinkEntity next;
-
-        public LinkEntity(int value) {
-            this.value = value;
-        }
-
-        public LinkEntity getNext() {
-            return next;
-        }
-
-        public void setNext(LinkEntity next) {
-            this.next = next;
-        }
-    }
 }
