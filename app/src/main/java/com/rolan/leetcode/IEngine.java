@@ -68,6 +68,7 @@ public interface IEngine {
      class LinkEntity{
         public int value;
          public LinkEntity next;
+         public LinkEntity pre;
 
         public LinkEntity(int value) {
             this.value = value;
@@ -90,6 +91,7 @@ public interface IEngine {
             buffer.append(current.value+"、");
             current=current.next;
         }
+        buffer.append(current.value);
         return buffer.toString();
     }
 }
