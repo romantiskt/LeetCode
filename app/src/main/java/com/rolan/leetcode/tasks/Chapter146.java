@@ -16,6 +16,33 @@ public class Chapter146 implements IEngine {
 
     }
 
+
+    private void solution() {
+
+        LRUCache cache = new LRUCache(2);
+        cache.put(1, 1);
+        cache.put(2, 2);
+        int result1 = cache.get(1);// 返回  1
+        cache.put(3, 3);    // 该操作会使得密钥 2 作废
+        int result2 = cache.get(2);       // 返回 -1 (未找到)
+        cache.put(4, 4);    // 该操作会使得密钥 1 作废
+        int result3 = cache.get(1);       // 返回 -1 (未找到)
+        int result4 = cache.get(3);       // 返回  3
+        int result5 = cache.get(4);       // 返回  4
+
+        String result = result1 + " " + result2 + " " + result3 + " " + result4 + " " + result5;
+
+        showResultDialg(getQuestion(), "cache.put(1,1);\n" +
+                "     * cache.put(2,2);\n" +
+                "     * cache.get(1);       // 返回  1\n" +
+                "     * cache.put(3,3);    // 该操作会使得密钥 2 作废\n" +
+                "     * cache.get(2);       // 返回 -1 (未找到)\n" +
+                "     * cache.put(4,4);    // 该操作会使得密钥 1 作废\n" +
+                "     * cache.get(1);       // 返回 -1 (未找到)\n" +
+                "     * cache.get(3);       // 返回  3\n" +
+                "     * cache.get(4);       // 返回  4", result);
+    }
+
     /**
      * LRU缓存机制
      * 运用你所掌握的数据结构，设计和实现一个  LRU (最近最少使用) 缓存机制。它应该支持以下操作： 获取数据 get 和 写入数据 put 。
@@ -36,32 +63,6 @@ public class Chapter146 implements IEngine {
      * cache.get(3);       // 返回  3
      * cache.get(4);       // 返回  4
      */
-    private void solution() {
-
-        LRUCache cache=new LRUCache(2);
-        cache.put(1, 1);
-        cache.put(2, 2);
-        int result1 = cache.get(1);// 返回  1
-        cache.put(3, 3);    // 该操作会使得密钥 2 作废
-        int result2 =cache.get(2);       // 返回 -1 (未找到)
-        cache.put(4, 4);    // 该操作会使得密钥 1 作废
-        int result3 =cache.get(1);       // 返回 -1 (未找到)
-        int result4 =cache.get(3);       // 返回  3
-        int result5 =cache.get(4);       // 返回  4
-
-        String result=result1+" "+result2+" "+result3+" "+result4+" "+result5;
-
-        showResultDialg(getQuestion(),"cache.put(1,1);\n" +
-                "     * cache.put(2,2);\n" +
-                "     * cache.get(1);       // 返回  1\n" +
-                "     * cache.put(3,3);    // 该操作会使得密钥 2 作废\n" +
-                "     * cache.get(2);       // 返回 -1 (未找到)\n" +
-                "     * cache.put(4,4);    // 该操作会使得密钥 1 作废\n" +
-                "     * cache.get(1);       // 返回 -1 (未找到)\n" +
-                "     * cache.get(3);       // 返回  3\n" +
-                "     * cache.get(4);       // 返回  4",result);
-    }
-
     @Override
     public String getQuestion() {
         return "LRU缓存机制";
