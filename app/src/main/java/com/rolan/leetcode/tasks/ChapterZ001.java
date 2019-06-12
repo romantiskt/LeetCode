@@ -33,6 +33,28 @@ public class ChapterZ001 implements IEngine {
     }
 
     /**
+     * 冒泡优化
+     * 设置一个标志位，来第一遍循环可得出数组是否已经有序
+     * @param input
+     * @return
+     */
+    private int[] solution2(int[] input) {
+        for (int i=0;i<input.length;i++){
+            boolean isSort=true;
+            for(int j=0;j<input.length-1-i;j++){
+                if(input[j]>input[j+1]){
+                    isSort=false;
+                    int temp=input[j];
+                    input[j]=input[j+1];
+                    input[j+1]=temp;
+                }
+            }
+            if(isSort)return input;
+        }
+        return input;
+    }
+
+    /**
      * 从左至右比较相邻两数大小，然后根据大小交换两数位置
      * @return
      */
