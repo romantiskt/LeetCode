@@ -94,4 +94,16 @@ public interface IEngine {
         buffer.append(current.value);
         return buffer.toString();
     }
+
+    default LinkEntity createLink(int start,int size){
+        int i = start;
+        LinkEntity head = new LinkEntity(i);
+        LinkEntity current = head;//为了保持正向链表，所以再声明一个游标
+        while (i++ < size) {
+            LinkEntity linkEntity = new LinkEntity(i);
+            current.setNext(linkEntity);
+            current = linkEntity;
+        }
+        return head;
+    }
 }
