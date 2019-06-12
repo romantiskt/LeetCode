@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    public static String[] datas = {"001","020","021", "075","146","203","206", "237","268","301", "326","344"};
+    public static String[] datas = {"001", "020", "021", "028", "075", "146", "203", "206", "237", "268", "301", "326", "344"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(containerAdapter);
     }
 
-    private void doItemClick(int postion) {
-        String className = "com.rolan.leetcode.tasks.Chapter" + datas[postion];
+    private static IEngine newInstanceByName(String name) {
         try {
-            Class<?> aClass = Class.forName(className);
-            IEngine engine = (IEngine) aClass.newInstance();
-            engine.doMath();
+            Class<?> aClass = Class.forName(name);
+            return (IEngine) aClass.newInstance();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -49,13 +48,20 @@ public class MainActivity extends AppCompatActivity {
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    private void doItemClick(int position) {
+        String className = "com.rolan.leetcode.tasks.Chapter" + datas[position];
+        IEngine iEngine = newInstanceByName(className);
+        if (iEngine != null) iEngine.doMath();
     }
 
     public static class ContainerAdapter extends RecyclerView.Adapter<ContainerAdapter.ContainerViewHolder> {
         Context mContext;
         OnItemClickListener itemClickListener;
 
-        public ContainerAdapter(Context mContext) {
+        ContainerAdapter(Context mContext) {
             this.mContext = mContext;
         }
 
@@ -69,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull ContainerViewHolder holder, int position) {
             holder.button.setText(datas[position]);
+            String className = "com.rolan.leetcode.tasks.Chapter" + datas[position];
+            IEngine iEngine = newInstanceByName(className);
+            if (iEngine != null)
+                holder.desc.setText(iEngine.getQuestion());
             holder.button.setOnClickListener(v -> {
                 if (itemClickListener != null) itemClickListener.click(position);
             });
@@ -79,20 +89,22 @@ public class MainActivity extends AppCompatActivity {
             return datas.length;
         }
 
-        public void setItemClickListener(OnItemClickListener itemClickListener) {
+        void setItemClickListener(OnItemClickListener itemClickListener) {
             this.itemClickListener = itemClickListener;
         }
 
-        public static class ContainerViewHolder extends RecyclerView.ViewHolder {
-            public Button button;
+        class ContainerViewHolder extends RecyclerView.ViewHolder {
+             Button button;
+             TextView desc;
 
-            public ContainerViewHolder(@NonNull View itemView) {
+             ContainerViewHolder(@NonNull View itemView) {
                 super(itemView);
                 button = itemView.findViewById(R.id.btn_item);
+                desc = itemView.findViewById(R.id.tv_desc);
             }
         }
 
-        public interface OnItemClickListener {
+        public  interface OnItemClickListener {
             void click(int postion);
         }
     }
