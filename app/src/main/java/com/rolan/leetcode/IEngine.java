@@ -95,7 +95,10 @@ public interface IEngine {
     default TreeNode createTree(int[] array) {
         List<TreeNode> list = new ArrayList<TreeNode>();
         for (int i = 0; i < array.length; i++) {
-            if(array[i]==-1)list.add(null);
+            if(array[i]==-1){
+                list.add(new TreeNode(null));
+                continue;
+            }
             TreeNode node = new TreeNode(array[i], null, null);    //创建结点，每一个结点的左结点和右结点为null
             list.add(node); // list中存着每一个结点
         }
@@ -148,7 +151,7 @@ public interface IEngine {
      * 树
      */
     class TreeNode {
-        public int val;
+        public Integer val;
         public TreeNode left;
         public TreeNode right;
 
@@ -158,7 +161,7 @@ public interface IEngine {
             this.right = right;
         }
 
-        public TreeNode(int x) {
+        public TreeNode(Integer x) {
             this.val = x;
         }
     }
