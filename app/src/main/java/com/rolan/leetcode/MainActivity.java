@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler)
     RecyclerView recyclerView;
-    public static String[] datas = {"001", "020", "021", "028","043", "075", "146", "203", "206", "237", "268", "301", "326", "344","415","Z001",
+    public static String[] datas = {"001", "020", "021", "028","043", "075","104", "146", "203", "206", "237", "268", "301", "326", "344","415","Z001",
                                     "Z002","Z003","Z004"};
 
     @Override
