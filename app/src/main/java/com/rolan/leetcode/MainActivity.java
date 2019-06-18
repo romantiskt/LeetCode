@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     public static String[] datas = {"001", "020", "021", "028","043", "075","094","100","102","104","108", "146",
             "203", "206","226", "237", "268", "301", "326", "344","415","Z001",
-                                    "Z002","Z003","Z004"};
+                                    "Z002","Z003","Z004","Z005"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
