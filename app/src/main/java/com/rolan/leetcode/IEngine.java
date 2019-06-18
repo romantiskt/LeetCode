@@ -6,8 +6,12 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by wangyang on 2019-06-05.18:05
@@ -66,6 +70,28 @@ public interface IEngine {
             }
         }
         return buffer.toString();
+    }
+
+    default String treeToStr(TreeNode root) {
+        List<List<Integer>> levelList = new ArrayList<>();
+        if (root == null) return "";
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int levels = 0;
+        while (!queue.isEmpty()) {
+            levelList.add(new ArrayList<>());
+            int listSize = queue.size();
+            for (int i = 0; i < listSize; i++) {
+                TreeNode node = queue.remove();
+                if (node.val != null)
+                    levelList.get(levels).add(node.val);
+                if (node.left != null) queue.add(node.left);
+                if (node.right != null) queue.add(node.right);
+            }
+            levels++;
+
+        }
+        return new Gson().toJson(levelList);
     }
 
     default String linkToStr(LinkEntity entity) {
