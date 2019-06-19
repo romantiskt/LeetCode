@@ -25,23 +25,40 @@ public class ChapterZ006 implements IEngine {
         sort(input, mid + 1, end);
     }
 
+    /**
+     * 两端开始扫描，先选取一个基准值，然后从右边开始扫描，当发现一个数值小于基准值，则停下记住此角标。
+     * 然后左边开始扫描，当发现一个数值大于基准值，则停下记住此角标。
+     * 然后交换上面记住的角标的值。
+     * 一轮循环交换后，将基准值与最后角标停留的位置的值 相交换
+     * @param input
+     * @param startIndex
+     * @param endIndex
+     * @return
+     */
     private int sortByTarget(int[] input, int startIndex, int endIndex) {
         int pivot = input[startIndex];//取基准值
-        int mark = startIndex;//Mark初始化为起始下标
+        int left=startIndex;
+        int right=endIndex;
 
-        for(int i=startIndex+1; i<=endIndex; i++){
-            if(input[i]<pivot){
-                //小于基准值 则mark+1，并交换位置。
-                mark ++;
-                int p = input[mark];
-                input[mark] = input[i];
-                input[i] = p;
+        while (left!=right){
+
+            while (left<right&&input[right]>=pivot){
+                right--;
             }
+            while (left<right&&input[left]<=pivot){
+                left++;
+            }
+            if(left<right){
+                int temp = input[left];
+                input[left]=input[right];
+                input[right]=temp;
+            }
+
         }
-        //基准值与mark对应元素调换位置
-        input[startIndex] = input[mark];
-        input[mark] = pivot;
-        return mark;
+        input[startIndex]=input[left];
+        input[left]=pivot;
+
+        return left;
     }
 
     @Override
