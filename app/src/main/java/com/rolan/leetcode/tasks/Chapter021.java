@@ -8,19 +8,19 @@ import com.rolan.leetcode.IEngine;
 public class Chapter021 implements IEngine {
     @Override
     public void doMath() {
-        LinkEntity link1 = createLink(0, 10);
-        LinkEntity link2 = createLink(3, 9);
+        ListNode link1 = createLink(0, 10);
+        ListNode link2 = createLink(3, 9);
         String input="\n"+linkToStr(link1)+"\n \n"+linkToStr(link2);
-        LinkEntity solution = solution(link1, link2);
+        ListNode solution = solution(link1, link2);
         showResultDialg(getQuestion(),input,linkToStr(solution));
 
     }
 
-    private LinkEntity solution(LinkEntity link1, LinkEntity link2) {
+    private ListNode solution(ListNode link1, ListNode link2) {
         if(link1==null)return link2;
         if(link2==null)return link1;
 
-        LinkEntity head;
+        ListNode head;
         if(link1.value<=link2.value){
             head=link1;
             head.next=solution(link1.next,link2);

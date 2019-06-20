@@ -94,9 +94,9 @@ public interface IEngine {
         return new Gson().toJson(levelList);
     }
 
-    default String linkToStr(LinkEntity entity) {
+    default String linkToStr(ListNode entity) {
         StringBuffer buffer = new StringBuffer();
-        LinkEntity current = new LinkEntity(entity.value);
+        ListNode current = new ListNode(entity.value);
         current.next = entity.next;
         while (current.next != null) {
             buffer.append(current.value + "、");
@@ -106,14 +106,14 @@ public interface IEngine {
         return buffer.toString();
     }
 
-    default LinkEntity createLink(int start, int size) {
+    default ListNode createLink(int start, int end) {
         int i = start;
-        LinkEntity head = new LinkEntity(i);
-        LinkEntity current = head;//为了保持正向链表，所以再声明一个游标
-        while (i++ < size) {
-            LinkEntity linkEntity = new LinkEntity(i);
-            current.setNext(linkEntity);
-            current = linkEntity;
+        ListNode head = new ListNode(i);
+        ListNode current = head;//为了保持正向链表，所以再声明一个游标
+        while (i++ < end) {
+            ListNode listNode = new ListNode(i);
+            current.setNext(listNode);
+            current = listNode;
         }
         return head;
     }
@@ -155,20 +155,20 @@ public interface IEngine {
     /**
      * 链表
      */
-    class LinkEntity {
+    class ListNode {
         public int value;
-        public LinkEntity next;
-        public LinkEntity pre;
+        public ListNode next;
+        public ListNode pre;
 
-        public LinkEntity(int value) {
+        public ListNode(int value) {
             this.value = value;
         }
 
-        public LinkEntity getNext() {
+        public ListNode getNext() {
             return next;
         }
 
-        public void setNext(LinkEntity next) {
+        public void setNext(ListNode next) {
             this.next = next;
         }
     }

@@ -10,27 +10,27 @@ public class Chapter206 implements IEngine {
     public void doMath() {
         //创建链表
         int i = 0;
-        LinkEntity head = new LinkEntity(i);
-        LinkEntity current = head;//为了保持正向链表，所以再声明一个游标
+        ListNode head = new ListNode(i);
+        ListNode current = head;//为了保持正向链表，所以再声明一个游标
         while (i++ < 10) {
-            LinkEntity linkEntity = new LinkEntity(i);
-            current.setNext(linkEntity);
-            current = linkEntity;
+            ListNode listNode = new ListNode(i);
+            current.setNext(listNode);
+            current = listNode;
         }
         String input = linkToStr(head);
 
-        LinkEntity result = solution(head);
+        ListNode result = solution(head);
         showResultDialg(getQuestion(), input, linkToStr(result));
 
 
     }
 
-    private LinkEntity solution(LinkEntity head) {
-        LinkEntity current = new LinkEntity(head.value);
+    private ListNode solution(ListNode head) {
+        ListNode current = new ListNode(head.value);
         current.next = null;
-        LinkEntity lastEntity = current;
+        ListNode lastEntity = current;
         while (head.next != null) {
-            LinkEntity entity = new LinkEntity(head.next.value);
+            ListNode entity = new ListNode(head.next.value);
             entity.next = lastEntity;
             lastEntity = entity;
             head = head.next;

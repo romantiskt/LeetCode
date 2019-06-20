@@ -10,15 +10,15 @@ public class Chapter237 implements IEngine {
     public void doMath() {
         //创建链表
         int i = 0;
-        LinkEntity head = new LinkEntity(i);
-        LinkEntity target = null;
-        LinkEntity current = head;//为了保持正向链表，所以再声明一个游标
+        ListNode head = new ListNode(i);
+        ListNode target = null;
+        ListNode current = head;//为了保持正向链表，所以再声明一个游标
         while (i++ < 10) {
-            LinkEntity linkEntity = new LinkEntity(i);
-            current.setNext(linkEntity);
-            current = linkEntity;
+            ListNode listNode = new ListNode(i);
+            current.setNext(listNode);
+            current = listNode;
             if (i == 5) {
-                target = linkEntity;
+                target = listNode;
             }
         }
         String input = linkToStr(head);
@@ -27,7 +27,7 @@ public class Chapter237 implements IEngine {
 
     }
 
-    private void solution(LinkEntity target) {
+    private void solution(ListNode target) {
         target.value = target.next.value;
         target.next = target.next.next;
     }
