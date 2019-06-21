@@ -94,6 +94,10 @@ public interface IEngine {
         return new Gson().toJson(levelList);
     }
 
+    default String toJson(Object ob){
+        return new Gson().toJson(ob);
+    }
+
     default String linkToStr(ListNode entity) {
         StringBuffer buffer = new StringBuffer();
         ListNode current = new ListNode(entity.value);
