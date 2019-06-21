@@ -45,7 +45,7 @@ public class Chapter008 implements IEngine {
             int bit = num.charAt(k) - '0';
             if(isMinus){//分正负数来判断溢出情况
 
-                if(result<Integer.MIN_VALUE/10||result == Integer.MIN_VALUE / 10 && bit > 8){
+                if(result<Integer.MIN_VALUE/10||result == Integer.MIN_VALUE / 10 && bit > 8){//MAX_VALUE : 2147483647 MIN_VALUE : -2147483648
                     return Integer.MIN_VALUE;
                 }else {
                     result=result*10-bit;
