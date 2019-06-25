@@ -46,17 +46,20 @@ public interface IEngine {
         showResultDialog(buffer.toString());
     }
 
-    default String intArrayToStr(int[] arr) {
+    default String intArrayToStr(int[] arr,int start,int end){
         StringBuffer buffer = new StringBuffer();
-        int pos = 0;
-        while (pos < arr.length) {
-            if (pos + 1 == arr.length) {
+        int pos = start;
+        while (pos <= end) {
+            if (pos == end) {
                 buffer.append(arr[pos++]);
             } else {
                 buffer.append(String.format("%d、", arr[pos++]));
             }
         }
         return buffer.toString();
+    }
+    default String intArrayToStr(int[] arr) {
+        return intArrayToStr(arr,0,arr.length-1);
     }
 
     default String charArrayToStr(char[] arr) {
