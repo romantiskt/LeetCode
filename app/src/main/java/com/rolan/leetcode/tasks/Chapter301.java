@@ -8,7 +8,7 @@ import com.rolan.leetcode.IEngine;
 public class Chapter301 implements IEngine {
     @Override
     public void doMath() {
-        // TODO: 2019-06-11 有难度，以后再做
+        // TODO: 2019-06-11 删除无效的括号
         showResultDialg(getQuestion(), "暂时还没有做这道题哦","");
     }
 
