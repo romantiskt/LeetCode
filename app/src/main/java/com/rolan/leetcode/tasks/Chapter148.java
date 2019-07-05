@@ -8,7 +8,6 @@ import com.rolan.leetcode.IEngine;
 public class Chapter148 implements IEngine {
     @Override
     public void doMath() {
-        // TODO: 2019-06-25 排序链表
         ListNode randomLink = createRandomLink(10, 100);
         showResultDialg(getQuestion(), linkToStr(randomLink)+"\n", linkToStr(sortList(randomLink)));
     }

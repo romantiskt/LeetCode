@@ -10,25 +10,27 @@ public class Chapter021 implements IEngine {
     public void doMath() {
         ListNode link1 = createLink(0, 10);
         ListNode link2 = createLink(3, 9);
-        String input="\n"+linkToStr(link1)+"\n \n"+linkToStr(link2);
+        String input = "\n" + linkToStr(link1) + "\n \n" + linkToStr(link2);
         ListNode solution = solution(link1, link2);
-        showResultDialg(getQuestion(),input,linkToStr(solution));
+        showResultDialg(getQuestion(), input, linkToStr(solution));
 
     }
 
     private ListNode solution(ListNode link1, ListNode link2) {
-        if(link1==null)return link2;
-        if(link2==null)return link1;
-
-        ListNode head;
-        if(link1.value<=link2.value){
-            head=link1;
-            head.next=solution(link1.next,link2);
-        }else {
-            head=link2;
-            head.next=solution(link1,link2.next);
+        ListNode root = new ListNode(0);
+        ListNode current = root;
+        while (link1 != null && link2 != null) {
+            if (link1.value <= link2.value) {
+                current.next = link1;
+                link1=link1.next;
+            } else {
+                current.next = link2;
+                link2=link2.next;
+            }
+            current=current.next;
         }
-        return head;
+        current.next = link1 == null ? link2 : link1;
+        return root.next;
     }
 
     /**
