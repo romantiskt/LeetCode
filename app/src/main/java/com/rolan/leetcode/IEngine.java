@@ -104,6 +104,7 @@ public interface IEngine {
 
     default String linkToStr(ListNode entity) {
         StringBuffer buffer = new StringBuffer();
+        if(entity==null)return "";
         ListNode current = new ListNode(entity.value);
         current.next = entity.next;
         while (current.next != null) {
@@ -127,7 +128,7 @@ public interface IEngine {
     }
 
     default ListNode createRandomLink(int size,int max) {
-        int i = 0;
+        int i = 1;
         ListNode head = new ListNode(i);
         ListNode current = head;//为了保持正向链表，所以再声明一个游标
         while (i++ < size) {
