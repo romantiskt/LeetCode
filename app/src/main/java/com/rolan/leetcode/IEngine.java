@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Random;
 
 /**
  * Created by wangyang on 2019-06-05.18:05
@@ -119,6 +120,18 @@ public interface IEngine {
         ListNode current = head;//为了保持正向链表，所以再声明一个游标
         while (i++ < end) {
             ListNode listNode = new ListNode(i);
+            current.setNext(listNode);
+            current = listNode;
+        }
+        return head;
+    }
+
+    default ListNode createRandomLink(int size,int max) {
+        int i = 0;
+        ListNode head = new ListNode(i);
+        ListNode current = head;//为了保持正向链表，所以再声明一个游标
+        while (i++ < size) {
+            ListNode listNode = new ListNode(new Random().nextInt(max));
             current.setNext(listNode);
             current = listNode;
         }
