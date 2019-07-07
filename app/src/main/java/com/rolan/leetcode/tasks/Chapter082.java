@@ -11,17 +11,36 @@ public class Chapter082 implements IEngine {
         ListNode link = createLink(0, 10);
         ListNode node = new ListNode(0);
         node.next = link;
-        String input = linkToStr(node);
-        ListNode result = deleteDuplicates(node);
+        ListNode root = new ListNode(0);
+        root.next = node;
+
+        String input = linkToStr(root);
+        ListNode result = deleteDuplicates(root);
         showResultDialg(getQuestion(),input,linkToStr(result));
 
     }
 
 
-
+    /**
+     * 巧用快慢指针来进行比较
+     * @param head
+     * @return
+     */
     public ListNode deleteDuplicates(ListNode head) {
-        // TODO: 2019-07-05  删除排序链表中的重复元素 II 
-        return null;
+        ListNode root=new ListNode(Integer.MIN_VALUE);
+        root.next=head;
+       ListNode slow=root;
+       ListNode fast=root.next;
+       while (fast!=null){
+           while (fast.next!=null&&fast.value==fast.next.value)fast=fast.next;
+           if(slow.next==fast){
+               slow=slow.next;
+           }else {
+               slow.next=fast.next;
+           }
+           fast=fast.next;
+       }
+        return root.next;
 
     }
 
