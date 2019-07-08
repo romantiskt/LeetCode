@@ -8,17 +8,17 @@ import com.rolan.leetcode.IEngine;
 public class Chapter092 implements IEngine {
     @Override
     public void doMath() {
-        ListNode link = createLink(9, 20);
+        ListNode link = createLink(3, 4);
         String input = linkToStr(link);
-        ListNode result = reverseBetween(link, 3, 8);
+        ListNode result = reverseBetween(link, 1, 2);
         showResultDialg(getQuestion(), input, linkToStr(result));
     }
 
-    public ListNode reverseBetween(ListNode head, int m, int n) {//[1,2,3,4]
+        public ListNode reverseBetween(ListNode head, int m, int n) {//[1，3] 1，2
         ListNode root = new ListNode(Integer.MIN_VALUE);
         root.next = head;
         ListNode left = root;
-        for (int i = 0; i < m; i++) {
+        for (int i = 1; i < m; i++) {
             left = left.next;
         }
         ListNode reveseStart=left.next;
