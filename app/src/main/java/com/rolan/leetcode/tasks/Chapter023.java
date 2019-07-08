@@ -18,7 +18,11 @@ public class Chapter023 implements IEngine {
 
     }
 
-
+    /**
+     * 分治的思想， 先分割成两个有序链表合并，
+     * @param lists
+     * @return
+     */
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) return null;
         if (lists.length == 1) return lists[0];
