@@ -13,7 +13,7 @@ public class Chapter100 implements IEngine {
         TreeNode tree1 = createTree(arr1);
         TreeNode tree2 = createTree(arr2);
         boolean result = isSameTree(tree1, tree2);
-        showResultDialg(getQuestion(),"\n"+intArrayToStr(arr1)+"\n"+intArrayToStr(arr2)+"\n",result+"");
+        showResultDialg(getQuestion(),LINE_FEED+intArrayToStr(arr1)+LINE_FEED+intArrayToStr(arr2)+LINE_FEED,result+"");
     }
 
     public boolean isSameTree(TreeNode p, TreeNode q) {

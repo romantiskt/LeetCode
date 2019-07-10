@@ -11,7 +11,7 @@ public class Chapter028 implements IEngine {
         String input="hello world";
         String target="wo";
         int result = strStr(input, target);
-        showResultDialg(getQuestion(),"\n"+input+"\n"+target, String.valueOf(result));
+        showResultDialg(getQuestion(),LINE_FEED+input+LINE_FEED+target, String.valueOf(result));
     }
 
     public int strStr(String haystack, String needle) {

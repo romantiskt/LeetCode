@@ -11,7 +11,7 @@ public class Chapter026 implements IEngine {
         int input[] = new int[]{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
         String inputStr = intArrayToStr(input);
         int result = removeDuplicates(input);
-        showResultDialg(getQuestion(), inputStr, intArrayToStr(input,0,result-1) + "\n" + result);
+        showResultDialg(getQuestion(), inputStr, intArrayToStr(input,0,result-1) + LINE_FEED + result);
 
     }
 

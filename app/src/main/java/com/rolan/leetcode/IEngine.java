@@ -20,6 +20,8 @@ import java.util.Random;
 public interface IEngine {
     Context context = null;
 
+    public String LINE_FEED="\n";
+
     void doMath();
 
     String getQuestion();
@@ -39,11 +41,11 @@ public interface IEngine {
         StringBuffer buffer = new StringBuffer();
         buffer.append("【题干】: ");
         buffer.append(solution);
-        buffer.append("\n");
-        buffer.append("\n");
-        buffer.append(String.format("【输入】: %s\n", input));
-        buffer.append("\n");
-        buffer.append(String.format("【输出】: %s\n", output));
+        buffer.append(LINE_FEED);
+        buffer.append(LINE_FEED);
+        buffer.append(String.format("【输入】: %s%s", input,LINE_FEED));
+        buffer.append(LINE_FEED);
+        buffer.append(String.format("【输出】: %s%s", output,LINE_FEED));
         showResultDialog(buffer.toString());
     }
 

@@ -12,7 +12,7 @@ public class Chapter226 implements IEngine {
         TreeNode tree = createTree(arr);
         String s1 = treeToStr(tree);
         TreeNode node = invertTree(tree);
-        showResultDialg(getQuestion(),intArrayToStr(arr)+"\n"+s1,treeToStr(node));
+        showResultDialg(getQuestion(),intArrayToStr(arr)+LINE_FEED+s1,treeToStr(node));
     }
 
     public TreeNode invertTree(TreeNode root) {

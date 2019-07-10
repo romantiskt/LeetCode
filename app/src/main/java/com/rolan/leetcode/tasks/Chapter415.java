@@ -11,7 +11,7 @@ public class Chapter415 implements IEngine {
         String num1="1";
         String num2="9";
         String result = solution(num1, num2);
-        showResultDialg(getQuestion(),"\n"+num1+"\n"+num2,result);
+        showResultDialg(getQuestion(),LINE_FEED+num1+LINE_FEED+num2,result);
 
     }
 

@@ -10,7 +10,7 @@ public class Chapter445 implements IEngine {
     public void doMath() {
         ListNode node1 = createLink(1, 3);
         ListNode node2 = createLink(5, 8);
-        String input = "\n" + linkToStr(node1) + "\n" + linkToStr(node2);
+        String input = LINE_FEED + linkToStr(node1) + LINE_FEED + linkToStr(node2);
         ListNode result = addTwoNumbers(node1,node2);
         showResultDialg(getQuestion(), input, linkToStr(result));
     }

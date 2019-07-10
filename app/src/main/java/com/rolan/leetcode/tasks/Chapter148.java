@@ -9,7 +9,7 @@ public class Chapter148 implements IEngine {
     @Override
     public void doMath() {
         ListNode randomLink = createRandomLink(10, 100);
-        showResultDialg(getQuestion(), linkToStr(randomLink)+"\n", linkToStr(sortList(randomLink)));
+        showResultDialg(getQuestion(), linkToStr(randomLink)+LINE_FEED, linkToStr(sortList(randomLink)));
     }
 
     /**

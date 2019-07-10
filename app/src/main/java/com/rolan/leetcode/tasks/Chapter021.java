@@ -10,7 +10,7 @@ public class Chapter021 implements IEngine {
     public void doMath() {
         ListNode link1 = createLink(0, 10);
         ListNode link2 = createLink(3, 9);
-        String input = "\n" + linkToStr(link1) + "\n \n" + linkToStr(link2);
+        String input = LINE_FEED + linkToStr(link1) + LINE_FEED+LINE_FEED + linkToStr(link2);
         ListNode solution = solution(link1, link2);
         showResultDialg(getQuestion(), input, linkToStr(solution));
 

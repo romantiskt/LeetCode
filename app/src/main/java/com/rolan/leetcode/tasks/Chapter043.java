@@ -13,7 +13,7 @@ public class Chapter043 implements IEngine {
         String num1="123";
         String num2="456";
         String result = solution(num1, num2);
-        showResultDialg(getQuestion(),"\n"+num1+"\n"+num2+"\n",result);
+        showResultDialg(getQuestion(),LINE_FEED+num1+LINE_FEED+num2+LINE_FEED,result);
     }
 
 

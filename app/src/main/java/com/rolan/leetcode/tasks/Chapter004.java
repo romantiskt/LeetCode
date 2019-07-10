@@ -11,7 +11,7 @@ public class Chapter004 implements IEngine {
         int[] num1=new int[]{1,2};
         int[] num2=new int[]{3,4};
 
-        String input="\n"+intArrayToStr(num1)+"\n"+intArrayToStr(num2);
+        String input=LINE_FEED+intArrayToStr(num1)+LINE_FEED+intArrayToStr(num2);
         double medianSortedArrays = findMedianSortedArrays(num1, num2);
         showResultDialg(getQuestion(),input, "这题有点难，先放着");
     }

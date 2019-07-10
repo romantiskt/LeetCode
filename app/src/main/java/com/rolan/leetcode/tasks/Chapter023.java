@@ -11,7 +11,7 @@ public class Chapter023 implements IEngine {
         ListNode link1 = createLink(1, 5);
         ListNode link2 = createLink(12, 20);
         ListNode link3 = createLink(8, 15);
-        String input = "\n" + linkToStr(link1) + "\n" + linkToStr(link2) + "\n" + linkToStr(link3);
+        String input = LINE_FEED+ linkToStr(link1) + LINE_FEED+ linkToStr(link2) +LINE_FEED+ linkToStr(link3);
         ListNode[] listNodes = new ListNode[]{link1, link2, link3};
         ListNode result = mergeKLists(listNodes);
         showResultDialg(getQuestion(), input, linkToStr(result));
