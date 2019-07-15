@@ -8,8 +8,8 @@ import com.rolan.leetcode.IEngine;
 public class Chapter033 implements IEngine {
     @Override
     public void doMath() {
-        int[] input = new int[]{4, 5, 6, 7, 0, 1, 2};
-        int result = search(input, 0);
+        int[] input = new int[]{5,1,3};
+        int result = search(input, 5);
         showResultDialg(getQuestion(), intArrayToStr(input), String.valueOf(result));
     }
 
@@ -17,19 +17,19 @@ public class Chapter033 implements IEngine {
     public int search(int[] nums, int target) {
         int start = 0;
         int end = nums.length - 1;
-        while (start < end) {
+        while (start <= end) {
             int mid = (start + end) / 2;
             if (nums[mid] == target) {
                 return mid;
             } else if (nums[mid] < nums[end]) {//中点落在旋转点的后半段
-                if (nums[mid] < target) {
+                if (nums[mid] < target&&target<=nums[end]) {
                     start = mid + 1;
                 } else {
                     end = mid - 1;
                 }
 
             } else {//中点落在了被旋转的前半段
-                if (nums[start] <= target & target < nums[mid]) {
+                if ((nums[start] <= target) && (target < nums[mid])) {
                     end = mid - 1;
                 } else {
                     start = mid + 1;
