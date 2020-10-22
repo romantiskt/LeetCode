@@ -1,6 +1,12 @@
 package com.rolan.leetcode.tasks;
 
+import com.google.gson.Gson;
 import com.rolan.leetcode.IEngine;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by Rolan on 2020/10/21.19:01
@@ -8,7 +14,61 @@ import com.rolan.leetcode.IEngine;
 public class Chapter310 implements IEngine {
     @Override
     public void doMath() {
-        // TODO: 2020/10/21  
+        String input="n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]";
+        int n=6;
+        int[][] edges={{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
+        List<Integer> solution = solution(n, edges);
+        showResultDialg(getQuestion(),input,new Gson().toJson(solution));
+    }
+
+    /**
+     * 核心思想就是剥洋葱的做法，或者是剪树枝的做法，总是从最外层开始剥，
+     * 这里也是一样，我们先从外面出度为1的开始循环，每一次循环之后把最外层的舍弃，开始往里面找，
+     * 理论上来说，最理想的结果是二分或者高位数，所以结果只可能有一个或者两个
+     * @param n
+     * @param edges
+     * @return
+     */
+    private List<Integer> solution(int n, int[][] edges) {
+        List<Integer> result=new ArrayList<>();
+        if (n==1){//如果节点为1则就是结果
+            result.add(0);
+            return result;
+        }
+        int [] indexed=new int[n];
+        List<List<Integer>> map=new ArrayList<>();
+        for (int i=0;i<n;i++){//先填好容器，保存每个节点相邻的节点
+            map.add(new ArrayList<>());
+        }
+        for (int[] item:edges){
+            indexed[item[0]]++;//节点的出度
+            indexed[item[1]]++;
+            map.get(item[0]).add(item[1]);//保存相邻的节点
+            map.get(item[1]).add(item[0]);
+        }
+        Queue<Integer> queue=new LinkedList();
+        for (int i=0;i<indexed.length;i++){
+            if (indexed[i]==1){//从外面开始，先将节点为1的入队列，
+                queue.offer(i);
+            }
+        }
+        while (!queue.isEmpty()){
+            result=new ArrayList<>();
+            int size = queue.size();
+            for (int i=0;i<size;i++){
+                Integer poll = queue.poll();
+                result.add(poll);
+                List<Integer> integers = map.get(poll);
+                for (int item:integers){
+                    indexed[item]--;
+                    if(indexed[item]==1){
+                        queue.offer(item);
+                    }
+                }
+            }
+        }
+        return result;
+
     }
 
     /**
