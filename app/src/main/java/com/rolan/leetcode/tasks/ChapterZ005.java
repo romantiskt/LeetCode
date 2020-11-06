@@ -17,6 +17,13 @@ public class ChapterZ005 implements IEngine {
         showResultDialg(getQuestion(),inputStr,intArrayToStr(input));
     }
 
+    /**
+     * 时间复杂度永远是 nLogn
+     * @param input
+     * @param start
+     * @param end
+     * @param temp
+     */
     private void solution(int[] input, int start, int end, int[] temp) {
         if(start>=end)return;
         int mid=start+(end-start)/2;
