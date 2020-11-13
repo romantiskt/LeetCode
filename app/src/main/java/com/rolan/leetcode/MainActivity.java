@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
             "148", "155","160","203", "206","226", "231","234","237", "268","275",
             "301", "310","326", "344","374","415","445", "455",
             "Z001", "Z002","Z003","Z004","Z005","Z006","Z007",
-            "J07","J09","J55"};
+            "J07","J09","J55",
+            "M1002"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -20,6 +20,8 @@ import java.util.Random;
 public interface IEngine {
     Context context = null;
 
+    Gson GSON=new Gson();
+
     public String LINE_FEED="\n";
 
     void doMath();

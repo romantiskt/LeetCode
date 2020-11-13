@@ -67,6 +67,30 @@ public class ChapterZ006 implements IEngine {
         return left;
     }
 
+    private static int division(int[] list, int left, int right) {
+        //以左边的数为基本值
+        int base = list[left];
+        while (left < right) {
+            //从序列右端开始，往左遍历，直到找到小于 base 的值
+            while (left < right && list[right] >= base) {
+                right--;
+            }
+            //找到比 base 小的元素，将这个元素放在最左边的位置
+            list[left] = list[right];
+
+            //从序列左端开始，往右遍历，直到找到大于 base 的值
+            while (left < right && list[left] <= base) {
+                left++;
+            }
+            //找到比 base 大的元素，将这个元素放在最右边的位置
+            list[right] = list[left];
+        }
+        //最后将base放到left位置，此时，left位置的左侧数值都应该比left小;
+        //而left位置的右侧数值都应该比left大
+        list[left] = base;
+        return left;
+    }
+
     @Override
     public String getQuestion() {
         return "快速排序";
